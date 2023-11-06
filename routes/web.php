@@ -7,6 +7,15 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\NewController;
 use App\Http\Controllers\admin\pageController;
+use App\Http\Controllers\user;
+use App\Http\Controllers\user\ShowPageController;
+use App\Http\Controllers\admin\productController;
+use App\Http\Controllers\user\ShowTourController;
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,11 +36,21 @@ Route::get('viewlogin',[AuthController::class,'viewlogin'])->name('viewlogin');
 Route::post('login',[AuthController::class,'login'])->name('login');
 Route::get('home',[HomeController::class,'home'])->name('home');
 
+Route::prefix("user")->name("user.")->group(function () {
+    Route::get("showPage",[ShowPageController::class,"showPage"])->name("showPage");
+    Route::get("showTour" ,[ShowTourController::class, "showTour"])->name("showTour");   
+
+    
+});
+
+
 Route::prefix('admin')->name('admin.')->group(function (){
     Route::group(["middleware"=>"checkUser"], function (){
         Route::get('index',[NewController ::class,'index'])->name('index');
         Route::get('page',[pageController::class,'page'])->name('page');
         Route::post('NewPage',[pageController::class,'NewPage'])->name('NewPages');
+        Route::get('create',[ProductController ::class,'create'])->name('create');
+        Route::post('product',[ProductController ::class,'product'])->name('product');
     });
 });
 
