@@ -19,4 +19,6 @@ class ShowTourController extends Controller
                     $datalist = showTour::showProductModel();
                     return view("user.showTour", compact("datalist"));
               }
+
+              
 }

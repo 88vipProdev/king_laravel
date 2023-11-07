@@ -24,8 +24,6 @@ class pageNew extends Model
             'content'=> $data['content'],
             'image'=> $data['image'],
         ]);
-
-        return $page;
-        
+        return $page; 
     }
 }

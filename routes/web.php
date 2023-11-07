@@ -11,6 +11,7 @@ use App\Http\Controllers\user;
 use App\Http\Controllers\user\ShowPageController;
 use App\Http\Controllers\admin\productController;
 use App\Http\Controllers\user\ShowTourController;
+use App\Http\Controllers\admin\ShowProductController;
 
 
 
@@ -51,6 +52,11 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::post('NewPage',[pageController::class,'NewPage'])->name('NewPages');
         Route::get('create',[ProductController ::class,'create'])->name('create');
         Route::post('product',[ProductController ::class,'product'])->name('product');
+        Route::get('show',[ShowProductController::class,'show'])->name('show');
+        Route::get('edit',[ProductController :: class ,'edit'])->name('edit');
+
+    
     });
 });
+
 
