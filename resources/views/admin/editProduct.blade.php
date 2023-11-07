@@ -10,7 +10,7 @@
         <h2>edit Product</h2>
 
         <div>
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{route("admin.update",['id'=>$product->id])}}" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="name">name</label>
                         <input type="text"   value = "name" id="" placeholder="name...">

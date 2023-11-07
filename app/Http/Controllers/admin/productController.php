@@ -41,8 +41,28 @@ class productController extends Controller
          }
 
 
-         public function edit()
+         public function edit($id)
          {
-            return view('admin.editProduct');
+            $product = productModel ::edit($id);
+            return view('admin.editProduct', compact('product','id'));
          }
+
+        public function update(productCreate $request, $id)
+        {
+            $path = null;
+            if ($request->hasFile("image")) {
+                 $image = $request->file("image");
+                 $path = $image->store("uploads","public");
+            }
+
+            $listdata = [
+             "name"=> $request->input('name'),
+             'location' => isset($request->location) ? $request->location : null,
+             'price'=>$request->input('price'),
+             'image'=>$path ,
+             ];
+            
+
+             $product = productModel :: editTour($listdata);
+        }
 }

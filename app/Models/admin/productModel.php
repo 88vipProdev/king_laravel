@@ -11,6 +11,7 @@ class productModel extends Model
 
             protected $fillable = ['name','image','location','price'];
             protected $table = 'product';
+            protected $primaryKey = 'id';
 
         public  static  function createTour($item)
         {
@@ -22,6 +23,12 @@ class productModel extends Model
                 ]);
             return $product;
         }
+        public static function edit($id)
+        {
+            $product = DB::table('product')->find($id);
+            return $product;
+        }
+
 
 
 

@@ -53,7 +53,8 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::get('create',[ProductController ::class,'create'])->name('create');
         Route::post('product',[ProductController ::class,'product'])->name('product');
         Route::get('show',[ShowProductController::class,'show'])->name('show');
-        Route::get('edit',[ProductController :: class ,'edit'])->name('edit');
+        Route::get('edit/{id}',[ProductController :: class ,'edit'])->name('edit');
+        route::post('update/{id}',[ProductController ::class,'update'])->name('update');
 
     
     });
