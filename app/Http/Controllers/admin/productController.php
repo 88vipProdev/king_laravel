@@ -39,6 +39,11 @@ class productController extends Controller
            
             }
 
+            public function edit()
+            {
+                return view('admin.editProduct');
+            }
+
 
 
 }
