@@ -49,20 +49,30 @@ class productController extends Controller
 
         public function update(productCreate $request, $id)
         {
-            $path = null;
-            if ($request->hasFile("image")) {
-                 $image = $request->file("image");
-                 $path = $image->store("uploads","public");
-            }
+               $path = null;
+               if ($request->hasFile("image")) {
+                    $image = $request->file("image");
+                    $path = $image->store("uploads","public");
+               }
 
-            $listdata = [
-             "name"=> $request->input('name'),
-             'location' => isset($request->location) ? $request->location : null,
-             'price'=>$request->input('price'),
-             'image'=>$path ,
-             ];
-            
+               $listdata = [
+               "name"=> $request->input('name'),
+               'location' => isset($request->location) ? $request->location : null,
+               'price'=>$request->input('price'),
+               'image'=>$path ,
+               ];
+               
 
-             $product = productModel :: editTour($listdata);
+               $product = productModel :: editTour($listdata);
+        }
+        public function deleteDetails($id)
+        {
+                if($product = productModel :: deleteDetailTour($id))
+                {
+                         return redirect()->route('admin.show')->with('success','xóa thành cônng');
+                }
+                else{
+                         return redirect()->route('admin.index')->with('error','không tìm thấy sản phẩm ');
+                }
         }
 }
