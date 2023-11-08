@@ -56,14 +56,13 @@ Route::get('/', function () {
                         Route::get('index',[NewController ::class,'index'])->name('index');
                         Route::get('page',[pageController::class,'page'])->name('page');
                         Route::post('NewPage',[pageController::class,'NewPage'])->name('NewPages');
-                        Route::get('create',[ProductController ::class,'create'])->name('create');
-                        Route::post('product',[ProductController ::class,'product'])->name('product');
+                        Route::get('create',[productController ::class,'create'])->name('create');
+                        Route::post('product',[productController ::class,'product'])->name('product');
                         Route::get('show',[ShowProductController::class,'show'])->name('show');
-                        Route::get('edit/{id}',[ProductController :: class ,'edit'])->name('edit');
-                        route::post('update/{id}',[ProductController ::class,'update'])->name('update');
-
+                        Route::get('edit/{id}',[productController :: class ,'edit'])->name('edit');
+                        Route::post('update/{id}',[productController ::class,'update'])->name('update');
+                        Route::delete('deleteDetails/{id}', [ProductController::class, 'deleteDetails'])->name('deleteDetails');
                 
                 });
             });
-
 
