@@ -65,9 +65,9 @@ class productController extends Controller
 
                $product = productModel :: editTour($listdata);
         }
-        public function deleteDetails($id)
+        public function deleteTour($id)
         {
-                if($product = productModel :: deleteDetailTour($id))
+                if($product = productModel :: deleteTour($id))
                 {
                          return redirect()->route('admin.show')->with('success','xóa thành cônng');
                 }
