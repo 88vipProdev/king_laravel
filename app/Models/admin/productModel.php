@@ -29,7 +29,7 @@ class productModel extends Model
                 return $product;
         }
 
-        public static function deleteDetailTour($id)
+        public static function deleteTour($id)
         {
                $product = DB::table('product')->find($id);
                if($product){
