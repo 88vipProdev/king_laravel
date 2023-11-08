@@ -30,7 +30,7 @@
                         <td><a href="{{ route('admin.edit', ['id' => $listItem->id]) }}">edit</a></td>
                         <td>
                             
-                            <form action="{{ route('admin.deleteDetails', ['id' => $listItem->id]) }}" method="post">
+                            <form action="{{ route('admin.deleteTour', ['id' => $listItem->id]) }}" method="post">
                                 @method('delete')
                                 @csrf
                                 <button type="submit">Delete</button>
