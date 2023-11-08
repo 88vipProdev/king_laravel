@@ -61,7 +61,7 @@ Route::get('/', function () {
                         Route::get('show',[ShowProductController::class,'show'])->name('show');
                         Route::get('edit/{id}',[productController :: class ,'edit'])->name('edit');
                         Route::post('update/{id}',[productController ::class,'update'])->name('update');
-                        Route::delete('deleteDetails/{id}', [ProductController::class, 'deleteDetails'])->name('deleteDetails');
+                        Route::delete('deleteTour/{id}', [ProductController::class, 'deleteTour'])->name('deleteTour');
                 
                 });
             });
