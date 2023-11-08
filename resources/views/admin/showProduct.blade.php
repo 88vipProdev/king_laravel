@@ -10,21 +10,34 @@
         <table>
             <thead>
                 <tr>
+                    
                     <td>name</td>
                     <td>location</td>
                     <td>image</td>
                     <td>price</td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
                @foreach ($listProduct as $listItem )
                    <tr>
+                        {{-- <td>{{$listItem->id}}</td> --}}
                         <td>{{$listItem->name}}</td>
                         <td>{{$listItem->location}}</td>
                         <td><img src="{{ asset('uploads/.$listItem') }}" alt="image" sizes="full" srcset=""></td>
                        
                         <td>{{$listItem->price}}</td>
+                        <td><a href="{{ route('admin.edit', ['id' => $listItem->id]) }}">edit</a></td>
+                        <td>
+                            
+                            <form action="{{ route('admin.deleteDetails', ['id' => $listItem->id]) }}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
                    </tr>
+
                @endforeach
             </tbody>
         </table>
