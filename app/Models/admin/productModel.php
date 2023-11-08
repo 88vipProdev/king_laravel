@@ -25,8 +25,21 @@ class productModel extends Model
         }
         public static function edit($id)
         {
-            $product = DB::table('product')->find($id);
-            return $product;
+                $product = DB::table('product')->find($id);
+                return $product;
+        }
+
+        public static function deleteDetailTour($id)
+        {
+               $product = DB::table('product')->find($id);
+               if($product){
+                    DB::table('product')->where('id', $id)->delete();
+                    return true;
+               }
+               else{
+                    return false;
+                }
+               
         }
 
 
