@@ -11,17 +11,21 @@ class productModel extends Model
 
             protected $fillable = ['name','image','location','price'];
             protected $table = 'product';
+           
+           
             protected $primaryKey = 'id';
 
         public  static  function createTour($item)
         {
-                $product = DB::table('product')->insert([
-                'name' => $item['name'],
-                'image' => isset($item['image']) ? $item['image'] : null,
-                'location' => $item['location'],
-                'price' => $item['price'],
-                ]);
-            return $product;
+                $product = DB::table('product')->insertGetId([
+                        'name'=> $item['name'],
+                        'image'=> $item['image'],
+                        'location'=> $item['location'],
+                        'price'=> $item['price'],
+
+                ], DB::table("category")->select("id","name")->get());
+                return $product;
+           
         }
         public static function edit($id)
         {
@@ -41,6 +45,8 @@ class productModel extends Model
                 }
                
         }
+
+      
 
 
 
