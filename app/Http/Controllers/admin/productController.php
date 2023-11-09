@@ -5,15 +5,19 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\productCreate;
+use App\Http\Requests\categoriesRequest;
 use App\Models\admin\productModel;
+use App\Models\admin\categoriesModel;
 
 class productController extends Controller
 {
          protected $product ;
+         protected $categories;
 
-         public function __construct(productModel $product)
+         public function __construct(productModel $product, categoriesModel $categories)
          {
                $this->productModel = $product;
+               $this->categoriesModel = $categories;
 
          }
 
@@ -75,4 +79,19 @@ class productController extends Controller
                          return redirect()->route('admin.index')->with('error','không tìm thấy sản phẩm ');
                 }
         }
+
+       Public function categories()
+       {
+            return view('admin.createCategories');
+      
+      }
+      public function createCategories(categoriesRequest $request){
+
+            $listCategories = [
+                  "namecategory" => $request->input("namecategory"),
+            ];
+
+            categoriesModel :: newcategories($listCategories);
+
+      }
 }
