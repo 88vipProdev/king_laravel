@@ -26,6 +26,7 @@ class productCreate extends FormRequest
                 "location"=>"required",
                 "price"=> "required|numeric",
                 "file"=> "'file' => 'required|file|mimes:jpg,jpeg,png|max:2048",
+                "categories_id"=> "required",
         ];
     }
 
@@ -37,6 +38,7 @@ class productCreate extends FormRequest
             "price.required"=> "không được để trống ",
             "price.numeric"=> "phải là kiểu số thực",
             "file.required"=> "không được bỏ trống ",
+            "categories_id.required"=>"không được bỏ trống",
         ];
     }
 }
