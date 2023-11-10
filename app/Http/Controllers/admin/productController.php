@@ -34,14 +34,20 @@ class productController extends Controller
                     $path = $image->store("uploads","public");
                }
 
-               $listdata = [
+               $item = [
                 "name"=> $request->input('name'),
                 'location' => isset($request->location) ? $request->location : null,
                 'price'=>$request->input('price'),
                 'image'=>$path ,
+                'namecategory'=>$request->input('namecategory'),
             ];
 
-              $product = productModel :: createTour($listdata);
+
+            $categoryID = [
+                  'namecategory' => $request->input('namecategory'),
+              ];
+
+              $product = productModel :: createTour($item ,$categoryID);
          }
 
 
