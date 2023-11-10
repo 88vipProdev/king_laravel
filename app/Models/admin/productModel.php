@@ -1,34 +1,25 @@
 <?php
 
 namespace App\Models\admin;
-
+use App\Models\admin\categoriesModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+
 class productModel extends Model
 {
     use HasFactory;
 
-            protected $fillable = ['name','image','location','price'];
+            protected $fillable = ['name','image','location','price','categories_id'];
             protected $table = 'product';
            
            
             protected $primaryKey = 'id';
 
-            public static function createTour($item, $categoryID)
-            {
-                $categoryId = DB::table('category')->where('namecategory', $categoryID['namecategory'])->value('id');
-            
-                $productId = DB::table('product')->insertGetId([
-                    'name' => $item['name'],
-                    'image' => $item['image'],
-                    'location' => $item['location'],
-                    'price' => $item['price'],
-                    'categories_id' => $categoryId,
-                ]);
-            
-                return $productId;
-            }
+        public function categories()
+        {
+            return $this->belongsTo(categoriesModel::class);
+        }
         public static function edit($id)
         {
                 $product = DB::table('product')->find($id);
@@ -46,6 +37,18 @@ class productModel extends Model
                     return false;
                 }
                
+        }
+
+        public static function createTour($data)
+        {
+                $product = new productModel();
+                $product->name = $data["name"];
+                $product->image = $data["image"];
+                $product->location = $data["location"];
+                $product->price = $data["price"];
+                $product->categories_id = $data["categories_id"];
+                $product ->save();
+                return $product ;
         }
 
       
