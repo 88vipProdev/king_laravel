@@ -22,32 +22,31 @@ class productController extends Controller
          }
 
          public function create()
-         {
-               return view("admin.createProduct");
+         {     
+
+
+               $category = categoriesModel ::pluck("namecategory","id");
+               return view("admin.createProduct",compact("category"));
          }
 
          public function product(productCreate $request)
          {
-               $path = null;
+              
                if ($request->hasFile("image")) {
                     $image = $request->file("image");
                     $path = $image->store("uploads","public");
                }
 
-               $item = [
-                "name"=> $request->input('name'),
-                'location' => isset($request->location) ? $request->location : null,
-                'price'=>$request->input('price'),
-                'image'=>$path ,
-                'namecategory'=>$request->input('namecategory'),
-            ];
+               $datalist = [
+                        "name"=>$request->input("name"),
+                        "image"=>$path ?? null ,
+                        "location"=>$request->input("location"),
+                        "price"=>$request->input("price"),
+                        "categories_id"=>$request->input("categories_id"),
+               ];
 
-
-            $categoryID = [
-                  'namecategory' => $request->input('namecategory'),
-              ];
-
-              $product = productModel :: createTour($item ,$categoryID);
+          
+               productModel :: createTour($datalist);
          }
 
 
