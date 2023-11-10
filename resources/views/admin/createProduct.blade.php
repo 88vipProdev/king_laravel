@@ -42,8 +42,20 @@
                         <div>{{@message}}</div>
                     @enderror
                 </div>
-                <button action = 'submit'>create</button>
-            </form action = "submit">
+                <div>
+                    <label for="namecategory">namecategory</label><br>
+                    <select name="namecategory" id="namecategory" required>
+                        <option value="">category</option>
+                        @foreach ($categories as $category)
+                            <option value="{{$category->namecategory}}">{{ $category->namecategory }}</option>
+                        @endforeach
+                    </select>
+                    @error("namecategory")
+                        <div>{{@message}}</div>
+                    @enderror
+                </div>
+                <button type  = 'submit'>create</button>
+            </form type= "submit">
         </div>
 </body>
 </html>
