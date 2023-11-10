@@ -15,18 +15,20 @@ class productModel extends Model
            
             protected $primaryKey = 'id';
 
-        public  static  function createTour($item)
-        {
-                $product = DB::table('product')->insertGetId([
-                        'name'=> $item['name'],
-                        'image'=> $item['image'],
-                        'location'=> $item['location'],
-                        'price'=> $item['price'],
-
-                ], DB::table("category")->select("id","name")->get());
-                return $product;
-           
-        }
+            public static function createTour($item, $categoryID)
+            {
+                $categoryId = DB::table('category')->where('namecategory', $categoryID['namecategory'])->value('id');
+            
+                $productId = DB::table('product')->insertGetId([
+                    'name' => $item['name'],
+                    'image' => $item['image'],
+                    'location' => $item['location'],
+                    'price' => $item['price'],
+                    'categories_id' => $categoryId,
+                ]);
+            
+                return $productId;
+            }
         public static function edit($id)
         {
                 $product = DB::table('product')->find($id);
