@@ -20,15 +20,19 @@ class productModel extends Model
         {
             return $this->belongsTo(categoriesModel::class);
         }
-        public static function edit($id,$newdata)
+        public static function editTour($newdata, $id)
         {
-                $product = self::find($id);
-                if($product){
-                        $product ->fill($newdata);
-                        $product->save();
-                        return $product;
-                }
-                return null ;
+             
+               $data = productModel::find($id);
+               $data->name = $newdata["name"];
+               $data->image = $newdata["image"];
+               $data->location = $newdata["location"];
+               $data->price = $newdata["price"];
+               $data->categories_id = $newdata["categories_id"];
+               $data->save();
+               return $data;
+
+
         }
 
         public static function deleteTour($id)
