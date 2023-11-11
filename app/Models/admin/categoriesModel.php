@@ -30,4 +30,14 @@ class categoriesModel extends Model
             {
                 return $this->belongsTo(ProductModel::class);
             }
+
+            public static function DeleteCategories($id)
+            {
+                  $category = categoriesModel::find($id);
+                  $category->delete();
+                  return $category;
+            }
+
+
+          
 }
