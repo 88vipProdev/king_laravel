@@ -52,28 +52,33 @@ class productController extends Controller
 
          public function edit($id)
          {
-            $product = productModel ::edit($id);
-            return view('admin.editProduct', compact('product','id'));
+            $product = productModel ::find($id);
+            $category = categoriesModel::pluck("namecategory","id");
+            return view('admin.editProduct', compact('product','id','category'));
          }
 
-        public function update(productCreate $request, $id)
+        public function update(productCreate $request,$id)
         {
-               $path = null;
-               if ($request->hasFile("image")) {
-                    $image = $request->file("image");
-                    $path = $image->store("uploads","public");
-               }
-
-               $listdata = [
-               "name"=> $request->input('name'),
-               'location' => isset($request->location) ? $request->location : null,
-               'price'=>$request->input('price'),
-               'image'=>$path ,
-               ];
                
+            $product = productModel ::find($id);{
+           
+                  if ($request->hasFile("image")) {
+                        $image = $request->file("image");
+                        $path = $image->store("uploads","public");
+                   }
+                  $datalist = [
+                        "name"=>$request->input("name"),
+                        "image"=>$path ?? null ,
+                        "location"=>$request->input("location"),
+                        "price"=>$request->input("price"),
+                        "categories_id"=>$request->input("categories_id"),
+                  ];
+                  }
 
-               $product = productModel :: editTour($listdata);
-        }
+                  productModel :: editTour($datalist,$id);
+            
+            }
+             
         public function deleteTour($id)
         {
                 if($product = productModel :: deleteTour($id))
