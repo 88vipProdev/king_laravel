@@ -12,6 +12,8 @@ use App\Http\Controllers\user\ShowPageController;
 use App\Http\Controllers\admin\productController;
 use App\Http\Controllers\user\ShowTourController;
 use App\Http\Controllers\admin\ShowProductController;
+use App\Http\Controllers\admin\showCategoriesController;
+
 
 
 
@@ -64,6 +66,7 @@ Route::get('/', function () {
                         Route::delete('deleteTour/{id}', [ProductController::class, 'deleteTour'])->name('deleteTour');
                         Route::get("categories",[ProductController::class,"categories"])->name("categories");
                         Route::post("createCategories",[productController ::class,"createCategories"])->name("create");
+                        Route::get("showCategories",[showCategoriesController::class,"showCategories"])->name("showCategories");                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
                 
                 });
             });
