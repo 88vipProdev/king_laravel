@@ -104,4 +104,11 @@ class productController extends Controller
             categoriesModel :: newcategories($listCategories);
 
       }
+
+
+      public function deleteCategories($id)
+      {
+            $delete = categoriesModel::DeleteCategories($id);                                                                                                           
+      
+      }
 }
