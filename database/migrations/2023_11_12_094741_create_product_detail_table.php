@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('review');
             $table->string('image');
             $table->string('location');
-            $table->string('price');
+            $table->float('price');
             $table->unsignedBigInteger('productId');
             $table->foreign('productId')->references('id')->on('product')->onDelete('cascade');
             $table->timestamps();
