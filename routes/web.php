@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\productController;
 use App\Http\Controllers\user\ShowTourController;
 use App\Http\Controllers\admin\ShowProductController;
 use App\Http\Controllers\admin\showCategoriesController;
+use App\Http\Controllers\admin\detailController;
 
 
 
@@ -69,8 +70,10 @@ Route::get('/', function () {
                         Route::get("showCategories",[showCategoriesController::class,"showCategories"])->name("showCategories");  
                         Route::delete("deleteCategories/{id}",[productController::class ,"deleteCategories"])->name("deleteCategories");
                         Route::get("showPage",[pageController::class,"showPage"])->name("showPage");
-                        Route::get("EditNew/{id}",[pageController::class , "EditNew"])->name("EditNew") ;
-                        Route::post("EditPage/{id}",[pageController::class, "EditPage"])->name("EditPage")   ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+                        Route::get("EditNew/{id}",[pageController::class , "EditNew"])->name("EditNew");
+                        Route::post("EditPage/{id}",[pageController::class, "EditPage"])->name("EditPage");
+                        Route::get("add",[detailController::class , "add"])->name("add");
+                        Route::post("createDetail",[detailController::class,"createDetail"])->name("createDetail");                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                 
                 });
             });
