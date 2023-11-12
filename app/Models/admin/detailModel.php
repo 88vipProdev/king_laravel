@@ -18,14 +18,14 @@ class detailModel extends Model
 
         public function productModel()
         {
-            return $this->belongsTo(ProductModel::class);
+            return $this->belongsTo(productModel::class);
         }
 
 
-         public static function createDetail($listDetail)
+         public static function addDetail($listDetail)
          {
                  $detail = new detailModel();
-                 $detail->namedetail = $listDetail["namedatail"];
+                 $detail->namedetail = $listDetail["namedetail"];
                  $detail->review = $listDetail["review"];
                  $detail->image = $listDetail["image"];
                  $detail->location = $listDetail["location"];
@@ -34,6 +34,12 @@ class detailModel extends Model
                  $detail->save() ;
                  return $detail ;
 
+         }
+
+         public static function showDetail()
+         {
+                $detaildata = detailModel::all();
+                return $detaildata ;
          }
    
 }
