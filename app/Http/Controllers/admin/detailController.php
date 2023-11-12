@@ -48,4 +48,11 @@ class detailController extends Controller
                 detailModel::addDetail($listDetail);
         }
 
+
+        public function Showdetail()
+        {
+                $detaildata = detailModel::showDetail();
+                return view("admin.showdetail",compact("detaildata"));
+        }
+
 }
