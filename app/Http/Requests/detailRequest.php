@@ -22,26 +22,28 @@ class detailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "namedetail"=> "required",
-            "review"=> "required",
-            "file"=>"required|file|mimes:jpg,jpeg,png|max:2048",
-            "location"=> "required",
-            "price"=> "required|nummeric",
+            "namedetail" => "required",
+            "review" => "required",
+            "image"=> 'required|file|mimes:jpg,jpeg,png|max:2048',
+            "location" => "required",
+            "price" => "required|numeric",
+            "productId"=> "required",
         ];
     }
 
     public function messages(): array
     {
         return [     
-            "namedetail.required"=> "không được để trống",
-            "review.required"=> "trường này không được để trống",
-            " file.required"=> "không được bỏ trống",
-            "file.mimes"=> "chỉ hỗ trợ cho jpg,jpeg,pnp,",
-            "file.max"=> "kích thước tệp tối đa:2048",
-            "location.required"=>"không được để trống",
-            "price"=> "không được để trống",
-            "price.nummeric"=>"kiểu số thực",
-            ];
+            "namedetail.required" => "không được để trống ",
+            "review.required" => "Trường này không được để trống",
+            "file.required" => "Trường này không được để trống",
+            "file.mimes" => "Chỉ hỗ trợ cho định dạng jpg, jpeg, png",
+            "file.max" => "Kích thước tệp tối đa: 2048",
+            "location.required" => "Trường này không được để trống",
+            "price.required" => "Trường này không được để trống",
+            "price.numeric" => "Giá trị phải là số",
+            "productId.required"=> "Không được để trống",
+        ];
     }
-
+                
 }

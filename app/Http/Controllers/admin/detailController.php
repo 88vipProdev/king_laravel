@@ -22,11 +22,13 @@ class detailController extends Controller
         public function add()
         {   
                 $detail = productModel::pluck("name","id");
-                return view("admin.newdetail",compact("detail"));
+    
+                return view("admin.newDetail",compact("detail"));
         }
 
         public function createDetail(detailRequest $request)
         {
+           
                 if ($request->hasFile("image")) {
                     $image = $request->file("image");
                     $path = $image->store("uploads","public");
@@ -41,8 +43,9 @@ class detailController extends Controller
                     "productId"=>$request->input("productId"),
                 ];
 
-                detailModel::createDetail($listDetail);
+              
 
+                detailModel::addDetail($listDetail);
         }
 
 }

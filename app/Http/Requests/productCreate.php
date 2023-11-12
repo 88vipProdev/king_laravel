@@ -25,7 +25,7 @@ class productCreate extends FormRequest
                 "name"=> "required",
                 "location"=>"required",
                 "price"=> "required|numeric",
-                "file"=> "'file' => 'required|file|mimes:jpg,jpeg,png|max:2048",
+                "image"=>"required|file|mimes:jpg,jpeg,png|max:2048",
                 "categories_id"=> "required",
         ];
     }
