@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
 use App\Models\Role;
-
+use App\Models\user\cartModel;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -65,6 +65,11 @@ public function role()
 public function isAdmin()
 {
     return $this->role()->where('name','admin')->exists();
+}
+
+public function cartModel()
+{
+    return $this->belongsTo(CartModel::class ,'user_id','id');
 }
 
 }
