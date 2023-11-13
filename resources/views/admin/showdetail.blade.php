@@ -29,6 +29,14 @@
                                     <td><img src="{{ asset("uploads/.$listdata->image") }}" alt="image" width="251px"></td>
                                     <td>{{$listdata->location}}</td>
                                     <td>{{$listdata->price}}</td>
+                                    <td><a href="{{ route('admin.update', ['id' => $listdata->id]) }}">edit</a></td>update</a></td>
+                                    <td>
+                                        <form action="{{ route('admin.delete', ['id' => $listdata->id]) }}" method="post">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                         @endforeach
                     </tbody>
