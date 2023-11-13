@@ -54,5 +54,12 @@ class detailModel extends Model
                 $detail->save() ;
                 return $detail ;
          }
+
+         public static function deleteDetail($id)
+         {
+                $detail = detailModel::find($id);
+                $detail->delete();
+                return $detail ;
+         }
    
 }
