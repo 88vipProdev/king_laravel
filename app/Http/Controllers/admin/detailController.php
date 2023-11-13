@@ -80,4 +80,10 @@ class detailController extends Controller
                  detailModel::updateDetail($datalist, $id);
         }
 
+        public function detailDelete($id)
+        {
+                $delete = detailModel::deleteDetail($id);
+
+        }
+
 }
