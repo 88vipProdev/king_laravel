@@ -55,4 +55,29 @@ class detailController extends Controller
                 return view("admin.showdetail",compact("detaildata"));
         }
 
+        public function update($id)
+        {
+                $detailId = detailModel::find($id);
+                return view("admin.updateDetail",compact("detailId"));
+        }
+
+        public function detailUpdate(detailRequest $request, $id)
+        {
+                $product = detailModel::find($id);
+                if ($request->hasFile("image")) {
+                        $image = $request->file("image");
+                        $path = $image->store("uploads","public");
+                   }
+                $datalist = [
+                        "namedetail"=>$request->input("namedetail"),
+                        "review"=>$request->input("review"),
+                        "image"=>$path ?? null,
+                        "location"=>$request->input("location"),
+                        "price"=>$request->input("price"),
+                        "productId"=>$request->input("productId"),
+                ];
+
+                 detailModel::updateDetail($datalist, $id);
+        }
+
 }
