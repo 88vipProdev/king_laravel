@@ -14,7 +14,7 @@ use App\Http\Controllers\user\ShowTourController;
 use App\Http\Controllers\admin\ShowProductController;
 use App\Http\Controllers\admin\showCategoriesController;
 use App\Http\Controllers\admin\detailController;
-
+use App\Http\Controllers\user\cartController;
 
 
 
@@ -45,7 +45,9 @@ Route::get('/', function () {
 
                 Route::group(["middleware"=>"checklogin"],function(){
                     Route::get("showPage",[ShowPageController::class,"showPage"])->name("showPage");
-                    Route::get("showTour" ,[ShowTourController::class, "showTour"])->name("showTour");   
+                    Route::get("showTour" ,[ShowTourController::class, "showTour"])->name("showTour");
+                    Route::post("addCarr{product}",[cartController::class,"addCart"])->name("addCart");
+                    Route::get("cart",[CartController::class,"cart"])->name("cart");
                 });
                 
 
@@ -77,7 +79,8 @@ Route::get('/', function () {
                         Route::get("Showdetail",[detailController::class,"Showdetail"])->name("Showdetail");
                         Route::get("update/{id}",[detailController::class , "update"])->name("update");
                         Route::post("detailUpdate/{id}",[detailController::class , "detailUpdate"])->name("detailUpdate");    
-                        Route::delete("detailDelete{id}",[detailController::class ,"detailDelete"])->name("delete");                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                        Route::delete("detailDelete{id}",[detailController::class ,"detailDelete"])->name("delete");
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
                 
                 });
             });
