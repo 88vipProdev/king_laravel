@@ -16,4 +16,25 @@ class cartModel extends Model
     {
         return $this->belongsToas(User::class);
     }
+
+    public static function addtoCart($cartId , $product  , $qty )
+    {
+            $cartItem = self::where("cart_id",$cartId)
+            ->where("product_id",$product)
+            ->first();
+            if ($cartItem) {
+                $cartItem->update(["qty"=>$cartItem->quantity+$qty]);
+
+            }else{
+                $cartItem= self::create([
+                    "product_id"=>$product ,
+                    "quantity"=>$qty,
+                    "cart_id"=>$cartId,
+                    ]);
+
+
+            }
+            return $cartItem;
+    }
+
 }
