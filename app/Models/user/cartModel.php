@@ -5,6 +5,10 @@ namespace App\Models\user;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\user\cartItemModel;
+use App\Models\user\product;
+
+
 class cartModel extends Model
 {
     use HasFactory;
@@ -12,29 +16,27 @@ class cartModel extends Model
     protected $fillable = ["id","user_id"] ;
 
 
-    public function users()
+    public function product()
     {
-        return $this->belongsToas(User::class);
+        return $this->belongsTo(product::class);
     }
+   
 
-    public static function addtoCart($cartId , $product  , $qty )
-    {
-            $cartItem = self::where("cart_id",$cartId)
-            ->where("product_id",$product)
-            ->first();
-            if ($cartItem) {
-                $cartItem->update(["qty"=>$cartItem->quantity+$qty]);
+     public static function addtoCart($data)
+     {
+          $cart = new cartModel() ;
 
-            }else{
-                $cartItem= self::create([
-                    "product_id"=>$product ,
-                    "quantity"=>$qty,
-                    "cart_id"=>$cartId,
-                    ]);
+          $cart->user_id = auth()->user()->id ;
+          $cart->product_id = $data["product_id"];
+          $cart->name = $data["name"];
+          $cart->price = $data["price"];
+          $cart->image= $data["image"];
+          $cart->quantity = $data["quantity"];
+          $cart->save();
+     }
 
-
-            }
-            return $cartItem;
-    }
-
+     public static function showCart()
+     {
+       return cartModel::with('product')->where('user_id', auth()->id())->get(); 
+     }
 }
