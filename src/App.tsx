@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from './Components/header';
+import Main from './Components/main';
 
 function App() {
   return (
@@ -17,7 +18,12 @@ function App() {
         logo="/logo.png"
         cart = "/cart"
       /> 
+        <div>
+            <main/>
+        </div>
        </div>
+      
+      
   );
 }
 
