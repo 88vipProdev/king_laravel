@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+<<<<<<< HEAD
 import './App.css';
+=======
+import './index.css';
+>>>>>>> 6ac1ecf (call api)
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
