@@ -2,3 +2,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.top-menu-item{
+    @apply cursor-pointer py-2 hover:text-gray-950 relative after:absolute after:bottom-0 after:left-0 after:bg-slate-950 after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:ease-in-out after:duration-500  flex-1 w-36 justify-between;
+}
