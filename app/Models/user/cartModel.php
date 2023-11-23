@@ -22,21 +22,10 @@ class cartModel extends Model
     }
    
 
-     public static function addtoCart($data)
-     {
-          $cart = new cartModel() ;
-
-          $cart->user_id = auth()->user()->id ;
-          $cart->product_id = $data["product_id"];
-          $cart->name = $data["name"];
-          $cart->price = $data["price"];
-          $cart->image= $data["image"];
-          $cart->quantity = $data["quantity"];
-          $cart->save();
-     }
 
      public static function showCart()
-     {
-       return cartModel::with('product')->where('user_id', auth()->id())->get(); 
+     {    
+          $cartItems = cartModel ::with('product')->get(); 
+          return $cartItems  ; 
      }
 }
