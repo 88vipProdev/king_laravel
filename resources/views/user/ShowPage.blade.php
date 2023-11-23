@@ -12,10 +12,8 @@
         @foreach ($show as $item )
             <h3>{{$item -> title}}</h3>
             <p>{{$item ->content}}</p>
-            <img src="{{ asset("uploads/.$item->image") }}" alt="image" width="251px">
-            @php
-                dd($item->image);
-            @endphp
+            <img src="{{ asset("uploads/.$item->image")}}" alt="image" width="251px">
+         
         @endforeach
         
 </body>

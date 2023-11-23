@@ -2,6 +2,7 @@
 
 namespace App\Models\admin;
 use App\Models\admin\categoriesModel;
+use App\Models\admin\detailModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +20,10 @@ class productModel extends Model
         public function categories()
         {
             return $this->belongsTo(categoriesModel::class);
+        }
+        public function detailModel()
+        {
+            return $this->belongsToas(detailModel::class);
         }
         public static function editTour($newdata, $id)
         {
@@ -59,6 +64,9 @@ class productModel extends Model
                 $product ->save();
                 return $product ;
         }
+
+
+        
 
       
 

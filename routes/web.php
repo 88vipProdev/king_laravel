@@ -46,8 +46,8 @@ Route::get('/', function () {
                 Route::group(["middleware"=>"checklogin"],function(){
                     Route::get("showPage",[ShowPageController::class,"showPage"])->name("showPage");
                     Route::get("showTour" ,[ShowTourController::class, "showTour"])->name("showTour");
-                    Route::post("addCarr{product}",[cartController::class,"addCart"])->name("addCart");
-                    Route::get("cart",[CartController::class,"cart"])->name("cart");
+                    Route::post("add-to-cart{id}",[cartController::class ,"render" ])->name("addtocart");
+                    
                 });
                 
 
@@ -80,7 +80,7 @@ Route::get('/', function () {
                         Route::get("update/{id}",[detailController::class , "update"])->name("update");
                         Route::post("detailUpdate/{id}",[detailController::class , "detailUpdate"])->name("detailUpdate");    
                         Route::delete("detailDelete{id}",[detailController::class ,"detailDelete"])->name("delete");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 
                 });
             });

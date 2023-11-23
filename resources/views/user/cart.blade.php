@@ -5,18 +5,20 @@
         <thead>
             <tr>
                 <th>Sản phẩm</th>
+                <th>image</th>
+                <th>price</th>
                 <th>Số lượng</th>
-                <th>Giá</th>
+             
             </tr>
         </thead>
         <tbody>
             @foreach ($product as $cartItem)
                 <tr>
                     <td>{{ $cartItem->product->name }}</td>
-                    <td>{{ $cartItem->product->price }}</td>
                     <td>{{ $cartItem->product->image }}</td>
-                    <td>{{ $cartItem->quantity }}</td>
                     <td>{{ $cartItem->product->price }}</td>
+                    <td>{{ $cartItem->quantity }}</td>
+          
                 </tr>
             @endforeach
         </tbody>

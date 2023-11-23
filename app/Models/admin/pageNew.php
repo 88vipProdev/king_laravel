@@ -33,12 +33,12 @@ class pageNew extends Model
             }
 
 
-            public static function edit($id, $data)
+            public static function edit($data,$id)
             {
                     $pagedata = pageNew::find($id);
-                    $pagedata->title = $data['title'];
-                    $pagedata->content = $data['content'];
-                    $pagedata->image = $data['image'];
+                    $pagedata->title = $data["title"];
+                    $pagedata->content = $data["content"];
+                    $pagedata->image = $data["image"];
                     $pagedata->save();
                     return $pagedata;
             }

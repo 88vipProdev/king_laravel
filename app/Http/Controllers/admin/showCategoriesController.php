@@ -10,15 +10,15 @@ class showCategoriesController extends Controller
 {
     
 
-           protected  $categories ;
+        protected  $categories ;
 
-           public function __construct(showCategories $categories)
-           {
-                   $this->showCategories = $categories;
-           }
+        public function __construct(showCategories $categories)
+        {
+                $this->showCategories = $categories;
+        }
 //              **********************************************hiển thị danh mục ******************************************************
-           public function showCategories()
-           {    $listCategories = showCategories :: showCategory();
-                return view("admin.ShowCategories",compact("listCategories"));
-           }
+        public function showCategories()
+        {    $listCategories = showCategories :: showCategory();
+        return view("admin.ShowCategories",compact("listCategories"));
+        }                                                                
 }

@@ -15,7 +15,14 @@
                     <p><img src="{{ asset('/uploads/.$listItem->image') }}" alt="" srcset=""></p>
                     <p>{{$listItem->location}}</p>
                     <p>{{$listItem->price}}</p>
-
+                 
+                    <p>
+                        <form action="{{route("user.addtocart",$listItem->id)}}" method="post">
+                            @method('post')
+                            @csrf
+                            <button type="submit">add to cart </button>
+                        </form>
+                    </p>
 
                 @endforeach
             </div>

@@ -24,8 +24,10 @@
                         {{-- <td>{{$listItem->id}}</td> --}}
                         <td>{{$listItem->name}}</td>
                         <td>{{$listItem->location}}</td>
-                        <td><img src="{{ asset('uploads/.$listItem') }}" alt="image" sizes="full" srcset=""></td>
-                       
+                        <td><img  src="{{ asset('storage/uploads'.$listItem->image) }}"  alt="image" sizes="full" srcset=""></td>
+                                {{-- @php
+                                    dd($listItem->image);
+                                @endphp --}}
                         <td>{{$listItem->price}}</td>
                         <td><a href="{{ route('admin.edit', ['id' => $listItem->id]) }}">edit</a></td>
                         <td>
@@ -35,6 +37,11 @@
                                 @csrf
                                 <button type="submit">Delete</button>
                             </form>
+                        </td>
+
+                        <td>
+
+                           
                         </td>
                    </tr>
 

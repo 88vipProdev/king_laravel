@@ -15,6 +15,5 @@ class showTour extends Model
         {
             $showTour = DB::table("product")->get();
             return $showTour;
-        }
-    
+            }
 }

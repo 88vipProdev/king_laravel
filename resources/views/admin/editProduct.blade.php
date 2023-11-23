@@ -18,7 +18,7 @@
                 <input type="text" name="name" value="{{ $product->name }}"><br>
             
                 <label for="image">Ảnh</label><br>
-                <img src="{{ asset('uploads/.$listItem') }}" alt="image" sizes="full" srcset=""><br>
+                <img src="{{ asset('uploads/.$product') }}" alt="image" sizes="full" srcset=""><br>
                 <input type="file" name="image" value="{{ $product->image }}"><br>
             
                 <label for="location">Vị trí</label><br>
@@ -30,8 +30,8 @@
                 <label for="categories_id">Category</label><br>
                 <select name="categories_id" id="categories_id" required><br>
                     <option value="">Select category</option><br>
-                    @foreach ($category as $id=>$name)
-                        <option value="{{$id}}">{{ $name }}</option><br>
+                    @foreach ($category as $id=>$namecategory)
+                        <option value="{{$id}}">{{ $namecategory }}</option><br>
                     @endforeach
                 </select>
                 @error('categories_id')

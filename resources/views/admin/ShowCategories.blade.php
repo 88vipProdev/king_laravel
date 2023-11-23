@@ -24,7 +24,13 @@
                            <tr>
                                 <td>{{$listItem->id}}</td>
                                 <td>{{$listItem->namecategory}}</td>
-                                
+                                <td>
+                                    <form action="{{ route('admin.deleteCategories', ['id' => $listItem->id]) }}" method="post">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </td>
                                
                            </tr>
         

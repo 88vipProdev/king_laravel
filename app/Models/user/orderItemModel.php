@@ -5,7 +5,8 @@ namespace App\Models\user;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\user\orderModel;
-use App\Models\user\ShowPage;
+
+use App\Models\user\product;
 class orderItemModel extends Model
 {
     use HasFactory;
@@ -16,12 +17,12 @@ class orderItemModel extends Model
     {
         return $this->belongsTo(orderModel::class);
     }
-    public function showPage()
+    
+
+    public function product()
     {
-        return $this->belongsTo(ShowPage::class);
-    }
-
-
-
+        return $this->belongsTo(product::class);
+    } 
+    
   
 }

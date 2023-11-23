@@ -5,7 +5,7 @@ namespace App\Models\user;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\user\cartModel;
-use App\Models\user\showTour;
+use App\Models\user\product;
 
 class cartItemModel extends Model
 {   
@@ -21,9 +21,10 @@ class cartItemModel extends Model
         return $this->belongsTo(cartModel::class);
     }
 
-    public function showTour()
+    public function product()
     {
-        return $this->belongsTo(showTour::class);
+        return $this->belongsTo(product::class);
     }
+
 
 }
