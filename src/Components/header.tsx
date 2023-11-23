@@ -2,12 +2,12 @@ import react from 'react';
 
 
 type header ={
-        home:any ;
-        contact:any ;
-        about:any ;
-        news :any ;
-        login:any ;
-        register:any ;
+        home:string ;
+        contact:string ;
+        about:string ;
+        news :string ;
+        login:string ;
+        register:string ;
         logo :string ;
         cart:any ;
         
