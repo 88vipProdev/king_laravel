@@ -43,5 +43,13 @@ class cartController extends Controller
             return redirect()->back();
         }
 
+        public function showCart()
+        {
+                $show = cartModel::showCart();
+                return view ("user.cart" ,compact("show"));
+
+               
+        }
+        
 
   }
