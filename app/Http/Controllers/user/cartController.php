@@ -44,14 +44,4 @@ class cartController extends Controller
         }
 
 
-        public function showcart()
-        {
-
-        }
-        
-        
-
-
-      
-
   }
