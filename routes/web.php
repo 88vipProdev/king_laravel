@@ -47,6 +47,7 @@ Route::get('/', function () {
                     Route::get("showPage",[ShowPageController::class,"showPage"])->name("showPage");
                     Route::get("showTour" ,[ShowTourController::class, "showTour"])->name("showTour");
                     Route::post("add-to-cart{id}",[cartController::class ,"render" ])->name("addtocart");
+                    Route::get("showCart" ,[cartController::class , "showCart"])->name("showCart");                                                                                     
                     
                 });
                 
