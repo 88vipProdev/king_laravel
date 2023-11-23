@@ -24,8 +24,10 @@ class cartModel extends Model
 
 
      public static function showCart()
-     {    
-          $cartItems = cartModel ::with('product')->get(); 
+     {    $user_id = Auth()->id();
+          $cartItems = cartModel::where('user_id', $user_id)->with('product') ->get();
+    
+    
           return $cartItems  ; 
      }
 }
