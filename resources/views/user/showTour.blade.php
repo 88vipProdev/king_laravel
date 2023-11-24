@@ -12,7 +12,9 @@
             <div>
                 @foreach ($datalist as $listItem )
                     <h3>{{$listItem ->name}}</h3>
-                    <p><img src="{{ asset('/uploads/.$listItem->image') }}" alt="" srcset=""></p>
+                    <img src="{{asset('storage/'.$listItem->image)}} " width =100px height =100 px " >
+
+                   
                     <p>{{$listItem->location}}</p>
                     <p>{{$listItem->price}}</p>
                  
