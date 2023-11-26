@@ -47,7 +47,9 @@ Route::get('/', function () {
                     Route::get("showPage",[ShowPageController::class,"showPage"])->name("showPage");
                     Route::get("showTour" ,[ShowTourController::class, "showTour"])->name("showTour");
                     Route::post("add-to-cart{id}",[cartController::class ,"render" ])->name("addtocart");
-                    Route::get("showCart" ,[cartController::class , "showCart"])->name("showCart");                                                                                     
+                    Route::get("showCart" ,[cartController::class , "showCart"])->name("showCart");
+                    Route::post("update{id}" , [cartController::class , "updateCart"])->name("updateCart");    
+                    Route::delete("remove{product_id}",[cartController::class , "remove"])->name("remove");                                                                                
                     
                 });
                 
