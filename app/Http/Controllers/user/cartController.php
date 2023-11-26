@@ -65,6 +65,14 @@ class cartController extends Controller
                 return redirect()->back();
               
               }
+
+
+            public function remove(Request $request , $id)
+            {
+                
+                $deleteCart = cartModel::deleteCart($id);
+
+            }
             public function showCart()
             {
                     $show = cartModel::showCart();
