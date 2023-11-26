@@ -25,17 +25,21 @@ class cartController extends Controller
                 $this->User = $user ;
 
             
-            // Thêm tour vào giỏ hàng
+         
             }
 
             
-            public function render(Request $request ,string $id)
+            public function render(cartRequest $request , string $id)
             {
 
                 $id_user = Auth::user()->id;
-                
+                if ($request->hasFile("image")) {
+                    $image = $request->file("image");
+                    $path = $image->store("uploads","public");
+                }
                 $cart = new cartModel() ;
                 $product = product::find($id);
+                $cart->image = $image;
                 $cart->user_id = $id_user;
                 $cart->product_id = $id;
                 $cart->quantity = 1;
@@ -49,6 +53,27 @@ class cartController extends Controller
                     return view ("user.cart" ,compact("show"));
 
                 
+            }
+
+            public function updateCart(Request $requset ,string $id)
+            {   
+                $id_user = Auth::user()->id;
+                $cart = new cartModel();
+                if($cart)
+                {
+                    $cart->quantity +=1 ;
+                    $cart->save(); 
+                }
+                else
+                {
+                    $product = product::find($id);
+                    $cart->user_id = $id_user;
+                    $cart->product_id = $id;
+                    $cart->quantity = 1;
+                    $cart->save();
+                    return redirect()->back();
+                }
+
             }
 
 
