@@ -15,6 +15,7 @@ use App\Http\Controllers\admin\ShowProductController;
 use App\Http\Controllers\admin\showCategoriesController;
 use App\Http\Controllers\admin\detailController;
 use App\Http\Controllers\user\cartController;
+use App\Http\Controllers\user\orderController;
 
 
 
@@ -49,7 +50,9 @@ Route::get('/', function () {
                     Route::post("add-to-cart{id}",[cartController::class ,"render" ])->name("addtocart");
                     Route::get("showCart" ,[cartController::class , "showCart"])->name("showCart");
                     Route::post("update{id}" , [cartController::class , "updateCart"])->name("updateCart");    
-                    Route::delete("remove{product_id}",[cartController::class , "remove"])->name("remove");                                                                                
+                    Route::delete("remove{product_id}",[cartController::class , "remove"])->name("remove");
+                    Route::get("store{id}",[orderController::class ,"store"])->name("store");
+                    Route::post("oderTour{id}",[orderController::class, "orderTour"])->name("order");                                                                               
                     
                 });
                 
