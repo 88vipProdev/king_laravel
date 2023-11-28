@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("address");
             $table->string("sdt");
             $table->string("nametour");
+            $table->float("price");
             $table->float("total_money");
             $table->string("status");
             $table->unsignedBigInteger("cart_id");
