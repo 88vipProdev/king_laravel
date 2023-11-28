@@ -7,6 +7,7 @@
                 <th>price</th>
                 <th>Số lượng</th>
                 <th>xóa</th>
+                <th>đặt hàng</th>
              
             </tr>
         </thead>
@@ -23,6 +24,10 @@
                             @csrf
                             <button type = "submit">delete</button>
                         </form>
+                
+                    </td>
+                    <td>
+                        <td><a href="{{ route('user.order', ['id' => $cartItem->id]) }}">edit</a></td>
                     </td>
             @endforeach
         </tbody>
