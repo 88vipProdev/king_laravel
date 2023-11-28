@@ -20,6 +20,7 @@ return new class extends Migration
             $table->float("price");
             $table->float("total_money");
             $table->string("status");
+            $table->integer('quantity');
             $table->unsignedBigInteger("cart_id");
             $table->unsignedBigInteger('user_id');
             $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');
