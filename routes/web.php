@@ -52,7 +52,7 @@ Route::get('/', function () {
                     Route::post("update{id}" , [cartController::class , "updateCart"])->name("updateCart");    
                     Route::delete("remove{product_id}",[cartController::class , "remove"])->name("remove");
                     Route::get("store{id}",[orderController::class ,"store"])->name("store");
-                    Route::post("oderTour{id}",[orderController::class, "orderTour"])->name("order");                                                                               
+                    Route::post("orderTour{id}", [orderController::class , "oderTour"])->name("orderTour");                                                                 
                     
                 });
                 
