@@ -27,7 +27,7 @@
                 
                     </td>
                     <td>
-                        <td><a href="{{ route('user.order', ['id' => $cartItem->id]) }}">edit</a></td>
+                        <td><a href="{{ route('user.store', ['id' => $cartItem->id]) }}">oder</a></td>
                     </td>
             @endforeach
         </tbody>
