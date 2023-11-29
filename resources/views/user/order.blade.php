@@ -1,55 +1,59 @@
 <div>
     
-        <form action="{{route("user.order", $cartItem->id)}}" method="post">
+        <form action="{{route("user.orderTour", ['id' => $cartItem->id])}}" method="post">
                 @csrf
-            <label for="fullname">FullName</label>
-            <input type="text" name="fullname" id="" placeholder="fullname">
             <div>
-                @error("fullname")
-                        <div>{{@message}}</div>
-                @enderror
-            </div>
-                    
-            
-    
-            <label for="address">address</label>
-            <input type="text" name="address" id="" placeholder="address">
-            <div>
-                @error('address')
-                    <div>{{@message}}</div>
-                @enderror
-            </div>
-            <label for="phone">phone</label>
-            <input type="text" name="sdt" id="" placeholder="phone">
-            <div>
-                @error("phone")
-                        <div>{{@message}}</div>
-                @enderror
-            </div>
-            <label for="nametour">nametour</label>
-            <input type="text" name="nametour" id="" placeholder="nametour">
-            <div>
-                @error("nametour")
-                        <div>{{@message}}</div>
-                @enderror
-            </div>
-            <label for="totalmoney">totalmoney</label>
-            <input type="text" name="total_money" id="" placeholder="totalmoney">
-            <div>
-                @error("total_money")
-                        <div>{{@message}}</div>                        
-                @enderror
-            </div>
-            <label for="address">status</label>
-            <input type="text" name="status" id="" placeholder="status">
-            <div>
-                @error("satust")
-                        <div>{{@message}}</div>
-                @enderror
-            </div>
+                @foreach ($cartItem->carts as $order)
 
-            <div><button type="submit">thanh toán</button></div>
+                     <td> <img src="{{asset('storage/'.$order->image)}} " width =100px height =100px ></td><br>
+                @endforeach
+                <div>
+                    <label for="fullname">fullname</label><br>
+                    <input type="text" name="fullname"><br>
+                    @error("fullname")
+                        <div>{{$message}}</div>
+                    @enderror
+                </div>
+                <div>
+                    <label for="address">address</label><br>
+                    <input type="text" name="fullname"><br>
+                    @error("address")
+                        <div>{{$message}}</div>
+                    @enderror
+                </div>
+                <div>
+                    <label for="phone">phone</label><br>
+                    <input type="text" name="fhone"><br>
+                    @error("phone")
+                        <div>{{$message}}</div>
+                    @enderror
+                </div>
+                @foreach ($cartItem->carts as $order )
+                <label for="cart_id">id</label><br>
+                <input type="text" name="cart_id" value="{{$order->id}}" id=""><br>
+                <label for="nametour">nametour</label><br>
+                <input type="text" name="name" value="{{$order->name}}"><br>
+                <label for="price">price</label><br>
+                <input type="text" name="price" value="{{$order->price}}" , id = ""><br>
+                <label for="quantyti">số lượng</label><br>
+                <input type="text" name="quantity" value="{{$order->quantity}}"><br>
+                <label for="total_money">thành tiền</label><br>
+               <input type="text" name="total_money" value="{{$order->quantity*$order->price}}"><br>
+               
+                @endforeach
+                <label for="status">status</label><br>
+                <input type="text" name="status" id=""><br>
+                <button type="submit">đặt hàng</button>
+            </div>
         </form>
     
     </div>
-    
+    {{-- "cart_id" =>$id,
+    "fullname"=>$request->input("fullname"),
+    "address"=>$request->input("address"),
+    "sdt"=>$request->input("sdt"),
+    "nametour"=>$request->input("nametour"),
+    "price"=>$request->input("price"),
+    "quantity"=>$request->input("quantity"),
+    "total_many"=>$request->input("total_maney"),
+    "status"=>$request->input("status"), --}}
