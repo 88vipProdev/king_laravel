@@ -11,7 +11,7 @@ class orderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,9 +29,13 @@ class orderRequest extends FormRequest
                 "sdt.required",
                 "sdt.string",
                 "nametour.required",
-                "id_cart.required",
+             
                 "total_money.numeric",
                 "status.required",
+                "price.require",
+                "price.numeric",
+                "quantity.required",
+
         ];
     }
 
@@ -45,9 +49,12 @@ class orderRequest extends FormRequest
                 "sdt.required"=>"không để trống",
                 "sdt.string"=>"nhập số",
                 "nametour.required"=>"không được trống",
-                "id_cart.required"=>"không được trống",
+             
                 "total_money.numeric"=>"không được trống",
-                "status.required"=>"không được trống"
+                "status.required"=>"không được trống",
+                "price.required"=>"không được trống",
+                "price.numeric"=>"phải là kiểu số thực",
+                "quantity.required"=>"không được trống",
         ]);
     }
 }
