@@ -17,10 +17,12 @@ class orderModel extends Model
     {
         return $this->belongsTo(User::class,"user_id");
     }
-    public function orderItemModel()
+
+    public function carts()
     {
-        return $this->belongsTo(OrderItemModel::class,"");
+        return $this->belongsTo(cartModel::class , "id" );
     }
+
     
 
     public static function oder($item ,$id)
@@ -30,14 +32,28 @@ class orderModel extends Model
         $order = new orderModel();
         $order->user_id = auth()->id();
 
-        $order->user_id = $id ;
-        $order->fullname = $item->fullname ;
-        $order->address = $item->address ;
-        $order->sdt = $item->sdt;
-        $order->nametour = $item->nametour;
-        $order->price = $item->price;
-        $order->quantity = $item->quantity ; 
-        $order->total_money = $item->quantity  * $item->price ;
+        $order->cart_id = $id ;
+            if (isset($item["nametour"]) && $item["nametour"] !== null) {
+                $order->nametour = $item["nametour"];
+            } 
+            if (isset($item["address"]) && $item["address"] !== null) {
+                $order->address = $item["address"];
+            }
+            
+            if (isset($item["sdt"]) && $item["sdt"] !== null) {
+                $order->sdt = $item["sdt"];
+            }
+            
+            if (isset($item["fullname"]) && $item["fullname"] !== null) {
+                $order->fullname = $item["fullname"];
+            } 
+            
+        
+        $order->price = $item["price"];
+        $order->quantity = $item["quantity"] ; 
+        if (isset($item["total_money"])) {
+            $order->total_money = $item["total_money"];
+        }
         $order->save();
     }
 }
