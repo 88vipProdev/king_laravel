@@ -24,16 +24,19 @@ class orderController extends Controller
 
         public function store($id)
         {
-                $cartItem = cartModel::find($id);
-                return view ("user.oder", compact("cartItem"));
+                $cartItem = cartModel::with('carts')->find($id);
+                
+               return view("user.order",compact("cartItem"));
         }
 
 
 
         public function oderTour(orderRequest $request ,$id)
-        { 
+        {        
                 $cartItem = cartModel::find($id);
+             
                 $orderList = [
+                        "cart_id" =>$id,
                         "fullname"=>$request->input("fullname"),
                         "address"=>$request->input("address"),
                         "sdt"=>$request->input("sdt"),
@@ -41,8 +44,9 @@ class orderController extends Controller
                         "price"=>$request->input("price"),
                         "quantity"=>$request->input("quantity"),
                         "total_many"=>$request->input("total_maney"),
+                        "status"=>$request->input("status"),
                 ];
-
+         
                 orderModel::oder($orderList , $id);
         }
 }
