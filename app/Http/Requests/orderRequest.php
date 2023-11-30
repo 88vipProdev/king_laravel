@@ -31,7 +31,7 @@ class orderRequest extends FormRequest
                 "nametour.required",
              
                 "total_money.numeric",
-                "status.required",
+             
                 "price.require",
                 "price.numeric",
                 "quantity.required",
@@ -42,7 +42,7 @@ class orderRequest extends FormRequest
     public function messages()
     {
         return([
-            "user_id.required"=>"không được trống",
+                "user_id.required"=>"không được trống",
                 "fullname.required"=>"tên không được để trống",
                 "fullname.max"=>"tên không dài quá 10 ký tự",
                 "address.required"=>"không để trống",
@@ -51,7 +51,7 @@ class orderRequest extends FormRequest
                 "nametour.required"=>"không được trống",
              
                 "total_money.numeric"=>"không được trống",
-                "status.required"=>"không được trống",
+             
                 "price.required"=>"không được trống",
                 "price.numeric"=>"phải là kiểu số thực",
                 "quantity.required"=>"không được trống",
