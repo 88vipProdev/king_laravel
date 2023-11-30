@@ -43,8 +43,8 @@ class orderController extends Controller
                         "nametour"=>$request->input("nametour"),
                         "price"=>$request->input("price"),
                         "quantity"=>$request->input("quantity"),
-                        "total_many"=>$request->input("total_maney"),
-                        "status"=>$request->input("status"),
+                        "total_money"=>$request->input("total_money"),
+                       
                 ];
          
                 orderModel::oder($orderList , $id);
