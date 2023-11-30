@@ -10,7 +10,7 @@ class orderModel extends Model
 {
 
     protected $table = "orders";
-    protected $fillable = ["id","user_id","cart_id,","fullname","nametour","address","status","sdt","total_money"] ;
+    protected $fillable = ["id","user_id","cart_id","fullname","nametour","address","status","sdt","total_money","quantity"] ;
     use HasFactory;
 
     public function users()
@@ -27,33 +27,22 @@ class orderModel extends Model
 
     public static function oder($item ,$id)
     {
-
+        // dd($item);
         $cart = cartModel::where('user_id', auth()->id())->first();
         $order = new orderModel();
         $order->user_id = auth()->id();
 
         $order->cart_id = $id ;
-            if (isset($item["nametour"]) && $item["nametour"] !== null) {
-                $order->nametour = $item["nametour"];
-            } 
-            if (isset($item["address"]) && $item["address"] !== null) {
-                $order->address = $item["address"];
-            }
-            
-            if (isset($item["sdt"]) && $item["sdt"] !== null) {
-                $order->sdt = $item["sdt"];
-            }
-            
-            if (isset($item["fullname"]) && $item["fullname"] !== null) {
-                $order->fullname = $item["fullname"];
-            } 
-            
+        $order->fullname = $item["fullname"];
+        $order->nametour =$item["nametour"];
+        $order->address = $item["address"];
+        $order->sdt = $item["sdt"];
         
         $order->price = $item["price"];
         $order->quantity = $item["quantity"] ; 
-        if (isset($item["total_money"])) {
-            $order->total_money = $item["total_money"];
-        }
+       
+        $order->total_money = $item["total_money"];
+    
         $order->save();
     }
 }
