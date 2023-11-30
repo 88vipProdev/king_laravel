@@ -13,18 +13,19 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string("fullname");
-            $table->string("address");
-            $table->string("sdt");
-            $table->string("nametour");
+            $table->string("fullname")->nullable();
+            $table->string("address")->nullable();
+            $table->string("sdt")->nullable();
+            $table->string("nametour")->nullable();
             $table->float("price");
             $table->float("total_money");
-            $table->string("status");
+            $table->string("status")->nullable();
             $table->integer('quantity');
             $table->unsignedBigInteger("cart_id");
             $table->unsignedBigInteger('user_id');
             $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
