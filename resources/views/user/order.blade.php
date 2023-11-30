@@ -1,6 +1,6 @@
 <div>
     
-        <form action="{{route("user.orderTour", ['id' => $cartItem->id])}}" method="post">
+        <form action="{{route("user.orderTour", $cartItem->id)}}" method="post">
                 @csrf
             <div>
                 @foreach ($cartItem->carts as $order)
@@ -16,14 +16,14 @@
                 </div>
                 <div>
                     <label for="address">address</label><br>
-                    <input type="text" name="fullname"><br>
+                    <input type="text" name="address"><br>
                     @error("address")
                         <div>{{$message}}</div>
                     @enderror
                 </div>
                 <div>
                     <label for="phone">phone</label><br>
-                    <input type="text" name="fhone"><br>
+                    <input type="text" name="sdt"><br>
                     @error("phone")
                         <div>{{$message}}</div>
                     @enderror
@@ -32,7 +32,7 @@
                 <label for="cart_id">id</label><br>
                 <input type="text" name="cart_id" value="{{$order->id}}" id=""><br>
                 <label for="nametour">nametour</label><br>
-                <input type="text" name="name" value="{{$order->name}}"><br>
+                <input type="text" name="nametour" value="{{$order->name}}"><br>
                 <label for="price">price</label><br>
                 <input type="text" name="price" value="{{$order->price}}" , id = ""><br>
                 <label for="quantyti">số lượng</label><br>
@@ -41,19 +41,10 @@
                <input type="text" name="total_money" value="{{$order->quantity*$order->price}}"><br>
                
                 @endforeach
-                <label for="status">status</label><br>
-                <input type="text" name="status" id=""><br>
+               
                 <button type="submit">đặt hàng</button>
             </div>
         </form>
     
     </div>
-    {{-- "cart_id" =>$id,
-    "fullname"=>$request->input("fullname"),
-    "address"=>$request->input("address"),
-    "sdt"=>$request->input("sdt"),
-    "nametour"=>$request->input("nametour"),
-    "price"=>$request->input("price"),
-    "quantity"=>$request->input("quantity"),
-    "total_many"=>$request->input("total_maney"),
-    "status"=>$request->input("status"), --}}
+ 
