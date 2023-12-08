@@ -15,25 +15,20 @@ class checkUser
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {  
-        
-   
-        // Kiểm tra xem người dùng đã xác thực hay chưa
-            if (!Auth::check()) {
-                // Người dùng chưa đăng nhập, chuyển hướng về trang đăng nhập
-                return redirect()->route('viewlogin');
-            }
+    public function handle(Request $request, Closure $next) {
 
-            // Kiểm tra xem người dùng có quyền admin hay không
-            if (Auth::user()->isAdmin()) {
-                // Người dùng là admin, chuyển hướng tới trang admin
-                return redirect()->route('admin.index');
-            }
-
-            // Người dùng không phải là admin, chuyển hướng hoặc trả về lỗi 403 Unauthorized
-            return abort(403, 'Unauthorized');
-    }
+        if(!Auth::check()) {
+          return response()->json(['error'=>'Unauthorized'], 403);
+        }
+     
+        if(Auth::user()->isAdmin()) {
+          return $next($request); 
+        }
+     
+        return response()->json(['error'=>'Forbidden'], 403);
+     
+     }
+     
     }
 
     
