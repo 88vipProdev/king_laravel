@@ -15,8 +15,7 @@ use App\Http\Controllers\admin\showCategoriesController;
 use App\Http\Controllers\admin\detailController;
 use App\Http\Controllers\user\cartController;
 use App\Http\Controllers\user\orderController;
-use App\Http\Controllers\admin\HomeAdminController;
-use App\Http\Controllers\user\HomeUserController;
+use App\Http\Controllers\admin\AdminHomeController;
 
 
 
@@ -41,22 +40,11 @@ Route::get('/', function () {
             Route::post('register',[AuthController::class ,'register'])->name('register');
             Route::get('viewlogin',[AuthController::class,'viewlogin'])->name('viewlogin');
             Route::post('login',[AuthController::class,'login'])->name('login');
-            
-            Route::prefix("admin")->name("admin.")->group(function(){
-                
-                Route::group(["middleware"=>"checkUser"],function(){
-                    
-                    Route::get('/', function () {
-                        return view('admin.home');
-                    });
-                });
-            });
-          
             Route::prefix("user")->name("user.")->group(function () {
 
                 Route::group(["middleware"=>"checklogin"],function(){
 
-               
+                    
                     Route::get("showPage",[ShowPageController::class,"showPage"])->name("showPage");
                     Route::get("showTour" ,[ShowTourController::class, "showTour"])->name("showTour");
                     Route::post("add-to-cart{id}",[cartController::class ,"render" ])->name("addtocart");
@@ -71,13 +59,17 @@ Route::get('/', function () {
 
                 
             });
-
-
+    
             Route::prefix('admin')->name('admin.')->group(function (){
-                Route::group(["middleware"=>"checkUser"], function (){
+                
+                        Route::get("/", function(){
+                            return view("login");
+                        })->name("login");
+                        Route::group(["middleware"=>"checkUser"], function (){
                       
-                      
-                        Route::get('index',[NewController ::class,'index'])->name('index');
+                    
+                        Route::get("home" ,[AdminHomeController::class, "home"])->name("home");
+                
                         Route::get('page',[pageController::class,'page'])->name('page');
                         Route::post('NewPage',[pageController::class,'NewPage'])->name('NewPages');
                         Route::get('create',[productController ::class,'create'])->name('create');
