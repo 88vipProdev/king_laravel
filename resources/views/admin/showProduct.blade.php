@@ -54,8 +54,11 @@
                         </td>
                         <td>{{$listItem->price}}</td>
                         <td>
-                            <button class="btn btn-primary">Update</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <a href="{{ route('admin.edit', ['id' =>$listItem->id]) }}" class="btn btn-primary">Update</a>
+                          
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.deleteTour', ['id' =>$listItem->id]) }}" class="btn btn-primary">delete</a>
                         </td>
                     </tr>
                 @endforeach
